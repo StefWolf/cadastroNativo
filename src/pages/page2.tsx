@@ -5,14 +5,13 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';  
@@ -24,6 +23,8 @@ function Page2({navigation, route}): JSX.Element {
 
     const email = route.params.propKey;
 
+    const [nome, setNome] = useState();
+
   return (
         <View
           style={{
@@ -34,8 +35,13 @@ function Page2({navigation, route}): JSX.Element {
                     onPress={() => navigation.goBack()}
                 >
                 <Text>voltar</Text>
-            </TouchableOpacity>
-            <Text style={{color:'black'}}>Page 2 - Olá Mundo {email}</Text>
+                </TouchableOpacity>
+            <Text style={styles.title}>Nome</Text>
+            <TextInput
+                    onChangeText={(value) => setNome(value)}
+                    value={nome}
+                    placeholder="Digite seu e-mail"
+            />
             <TouchableOpacity style={styles.button}
                 onPress={() => navigation.navigate('Page3')}
             >

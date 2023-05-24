@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -13,7 +13,9 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   View,
+  TouchableOpacity,
 } from 'react-native';
 
 
@@ -21,35 +23,50 @@ import {
 
 function Page3(): JSX.Element {
 
+    const [senha, setSenha] = useState();
+
+    const handleSubmit = () => {
+
+    }
+
   return (
-        <View
-          style={{
-           flex:1,
-           justifyContent: 'center',
-           alignItems: 'center'
-          }}>
-            <Text style={{color:'black'}}>Page 3 - Olá Mundo</Text>
-        </View>
+    <View
+    style={{
+    flex:1,
+    alignItems: 'center',
+    backgroundColor: 'white'
+}}>
+    <Text style={styles.title}>Senha</Text>
+    <TextInput 
+        onChangeText={(value) => setSenha(value)}
+        value={senha}
+        placeholder="Digite sua senha"
+        secureTextEntry={true}
+    />
+    <TouchableOpacity style={styles.button}
+        onPress={handleSubmit}
+    >
+        <Text style={{fontSize:20}}>Cadastrar</Text>
+    </TouchableOpacity>
+</View>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+    sectionContainer: {
+      marginTop: 32,
+      paddingHorizontal: 24,
+    },
+    button: {
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderColor: 'black',
+      borderWidth: 1,
+    },
+    title: {
+      fontSize: 40
+    }
+  });
 
 export default Page3;
