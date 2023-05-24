@@ -16,9 +16,6 @@ import {
   Alert
 } from 'react-native';
 
-
-
-
 function Page1({ navigation }) {
 
     const [email, setEmail] = useState('');
@@ -31,7 +28,7 @@ function Page1({ navigation }) {
     const handleSubmit = () => {
         Alert.alert('Texto digitado:', email);
         if (validateEmail()) {
-            navigation.navigate('Page2')
+            navigation.navigate('Page2', { propKey: email })
         } else {
             Alert.alert('E-mail inválido');
         }
