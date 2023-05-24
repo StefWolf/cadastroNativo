@@ -25,6 +25,10 @@ function Page2({navigation, route}): JSX.Element {
 
     const [nome, setNome] = useState();
 
+    const handleSubmit = () => {
+        navigation.navigate('Page3', {propKey1: email, propKey2: nome})
+     };
+
   return (
         <View
           style={{
@@ -43,7 +47,7 @@ function Page2({navigation, route}): JSX.Element {
                     placeholder="Digite seu e-mail"
             />
             <TouchableOpacity style={styles.button}
-                onPress={() => navigation.navigate('Page3')}
+                onPress={handleSubmit}
             >
                 <Text>continuar</Text>
             </TouchableOpacity>

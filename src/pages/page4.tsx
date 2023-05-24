@@ -19,7 +19,11 @@ import {
 
 
 
-function Page4(): JSX.Element {
+function Page4({navigation, route}): JSX.Element {
+
+    const email = route.params.propKey1;
+    const nome = route.params.propKey2;
+    const senha = route.params.propKey3;
 
   return (
         <View
@@ -29,6 +33,15 @@ function Page4(): JSX.Element {
            alignItems: 'center'
           }}>
             <Text style={{color:'black'}}>Page 4 - Olá Mundo</Text>
+            <Text>
+                {email}
+            </Text>
+            <Text>
+                {nome}
+            </Text>
+            <Text>
+                {senha}
+            </Text>
         </View>
   );
 }

@@ -21,12 +21,15 @@ import {
 
 
 
-function Page3(): JSX.Element {
+function Page3({navigation, route}): JSX.Element {
 
+    const email = route.params.propKey1;
+    const nome = route.params.propKey2;
+    
     const [senha, setSenha] = useState();
 
     const handleSubmit = () => {
-
+        navigation.navigate('Page4', {propKey1: email, propKey2: nome, propKey3: senha})
     }
 
   return (
@@ -36,6 +39,11 @@ function Page3(): JSX.Element {
     alignItems: 'center',
     backgroundColor: 'white'
 }}>
+    <TouchableOpacity
+        onPress={() => navigation.goBack()}
+    >
+        <Text>voltar</Text>
+    </TouchableOpacity>
     <Text style={styles.title}>Senha</Text>
     <TextInput 
         onChangeText={(value) => setSenha(value)}
