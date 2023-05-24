@@ -5,13 +5,15 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  TextInput,
+  Alert
 } from 'react-native';
 
 
@@ -19,22 +21,42 @@ import {
 
 function Page1({ navigation }) {
 
-  return (
-        <View
-          style={{
-           flex:1,
-           justifyContent: 'center',
-           alignItems: 'center',
-           backgroundColor: 'green'
-          }}>
-            <Text >Page 1 - Olá Mundo</Text>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Page2')}
-            >
-                <Text>continuar</Text>
-            </TouchableOpacity>
-        </View>
-  );
+    const [email, setEmail] = useState('');
+
+    const validateEmail = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const handleSubmit = () => {
+        Alert.alert('Texto digitado:', email);
+        if (validateEmail()) {
+            navigation.navigate('Page2')
+        } else {
+            Alert.alert('E-mail inválido');
+        }
+     };
+
+    return (
+            <View
+                style={{
+                flex:1,
+                alignItems: 'center',
+                backgroundColor: 'white'
+            }}>
+                <Text style={styles.title}>E-mail</Text>
+                <TextInput 
+                    onChangeText={(value) => setEmail(value)}
+                    value={email}
+                    placeholder="Digite seu e-mail"
+                />
+                <TouchableOpacity style={styles.button}
+                    onPress={handleSubmit}
+                >
+                    <Text style={{fontSize:20}}>continuar</Text>
+                </TouchableOpacity>
+            </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -42,18 +64,16 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  button: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'black',
+    borderWidth: 1,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  title: {
+    fontSize: 40
+  }
 });
 
 export default Page1;
