@@ -11,7 +11,7 @@ import {
 
   StyleSheet,
   Text,
-  TextInput,
+  Alert,
   TouchableOpacity,
   View,
 } from 'react-native';  
@@ -25,10 +25,14 @@ function Page2({navigation, route}): JSX.Element {
 
     const email = route.params.propKey;
 
-    const [nome, setNome] = useState();
+    const [nome, setNome] = useState('');
 
     const handleSubmit = () => {
-        navigation.navigate('Page3', {propKey1: email, propKey2: nome})
+        if(nome.length != 0){
+          navigation.navigate('Page3', {propKey1: email, propKey2: nome})
+        } else {
+          Alert.alert('Nome de campo vazio')
+        }  
      };
 
   return (
@@ -37,7 +41,7 @@ function Page2({navigation, route}): JSX.Element {
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                 >
-                <Text>voltar</Text>
+                <Text style={{fontSize:20, color:'white', fontFamily:'Arial'}}>voltar</Text>
                 </TouchableOpacity>
             <Title text={"Agora, digite seu Nome"} />
             <Input setData={setNome} data={nome} placeholder={"Digite seu nome"}/>

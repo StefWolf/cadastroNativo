@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Alert
 } from 'react-native';
 import Button from '../components/Button';
 import Title from '../components/Title';
@@ -23,10 +24,14 @@ function Page3({navigation, route}): JSX.Element {
     const email = route.params.propKey1;
     const nome = route.params.propKey2;
     
-    const [senha, setSenha] = useState();
+    const [senha, setSenha] = useState('');
 
     const handleSubmit = () => {
+      if(senha.length > 8) {
         navigation.navigate('Page4', {propKey1: email, propKey2: nome, propKey3: senha})
+      } else {
+        Alert.alert("Por favor, digite uma senha acima de 8 caracteres")
+      }
     }
 
   return (
@@ -35,7 +40,7 @@ function Page3({navigation, route}): JSX.Element {
     <TouchableOpacity
         onPress={() => navigation.goBack()}
     >
-        <Text>voltar</Text>
+        <Text style={{fontSize:20, color:'white', fontFamily:'Arial'}}>voltar</Text>
     </TouchableOpacity>
 
     <Title text={"Agora para finalizar..."} />
