@@ -21,6 +21,8 @@ import Title from '../components/Title';
 
 function Page3({navigation, route}): JSX.Element {
 
+  /** Ps, uma idéia que tinha pensado para substituir esse uso de props é utilizar Context, mas por questão de estar muito em cima da hora então continuei com as props */
+
     const email = route.params.propKey1;
     const nome = route.params.propKey2;
     
