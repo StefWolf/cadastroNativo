@@ -31,11 +31,8 @@ Autoria: Stefane de Assis Orichuela
   
   ou
   
-  ```npm run andoid``` 
-  
-  ou
-  
-  ``` npm run web ```
+  ```npm run android``` 
+
 
 
     
