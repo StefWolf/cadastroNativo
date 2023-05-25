@@ -16,7 +16,7 @@ import {
   View,
 } from 'react-native';
 
-
+import Title from '../components/Title';
 
 
 function Page4({navigation, route}): JSX.Element {
@@ -27,12 +27,8 @@ function Page4({navigation, route}): JSX.Element {
 
   return (
         <View
-          style={{
-           flex:1,
-           justifyContent: 'center',
-           alignItems: 'center'
-          }}>
-            <Text style={{color:'black'}}>Page 4 - Olá Mundo</Text>
+          style={styles.container}>
+            <Title text={"Dados do usuário"} />
             <Text>
                 {email}
             </Text>
@@ -47,22 +43,18 @@ function Page4({navigation, route}): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container : {
+    flex:1,
+    alignItems: 'center',
+    backgroundColor: '#05154f',
+    padding: 20,
+    justifyContent: 'space-between',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  text: {
+    color: 'white',
+    fontFamily:'Arial',
+    fontSize:15
+  }
 });
 
 export default Page4;

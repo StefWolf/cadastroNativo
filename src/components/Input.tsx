@@ -1,19 +1,15 @@
 import {
     StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
     TextInput,
-    Alert
   } from 'react-native';
   
-function Input({setEmail, email}) {
+function Input({setData, data, placeholder}) {
     return( 
         <TextInput 
-            onChangeText={(value) => setEmail(value)}
-            value={email}
+            onChangeText={(value) => setData(value)}
+            value={data}
             style={styles.input}
-            placeholder="Digite seu e-mail"
+            placeholder= {placeholder}
             placeholderTextColor="#7c8bbf"
         />
     );

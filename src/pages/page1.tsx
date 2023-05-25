@@ -6,19 +6,16 @@
  */
 
 import React, { useState } from 'react';
-import type {PropsWithChildren} from 'react';
 
 
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Alert
+  View
 } from 'react-native';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import Title from '../components/Title';
 
 function Page1({ navigation }) {
 
@@ -41,10 +38,10 @@ function Page1({ navigation }) {
     return (
             <View
                 style={styles.container}>
-                <Text style={styles.title}>Crie sua própria conta</Text>
+                <Title text={"Crie sua própria conta"} />
                 <View style={{width: '100%', gap:20, flexDirection:'column', alignItems:'center'}}>
                 
-                  <Input setEmail={setEmail} email={email} />
+                  <Input setData={setEmail} data={email} placeholder={"Digite seu e-mail"}/>
                   {
                     isValid ? false : (
                       <View style={{backgroundColor:'#bf3247', padding:5, borderRadius:20, width:'100%', alignItems:'center'}}>
@@ -56,7 +53,7 @@ function Page1({ navigation }) {
                   }
                 </View>
                
-                  <Button onPress={handleSubmit} />    
+                  <Button onPress={handleSubmit} text={"CONTINUAR"}/>    
             </View>
     );
 }
@@ -68,13 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#05154f',
     padding: 20,
     justifyContent: 'space-between',
-  },
-   title: {
-    fontSize: 30,
-    color: 'white',
-    fontFamily: 'Arial',
-  },
- 
+  }
 });
 
 export default Page1;

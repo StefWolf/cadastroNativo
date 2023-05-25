@@ -7,12 +7,12 @@ import {
     Alert
   } from 'react-native';
   
-function Button({onPress}) {
+function Button({onPress, text}) {
     return( 
         <TouchableOpacity style={styles.button} 
             onPress={onPress}
         >
-            <Text style={{fontSize:20}}>CONTINUAR</Text>
+            <Text style={{fontSize:20}}>{text}</Text>
         </TouchableOpacity>
     );
 }

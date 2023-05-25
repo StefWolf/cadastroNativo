@@ -8,17 +8,14 @@
 import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   View,
   TouchableOpacity,
 } from 'react-native';
-
-
+import Button from '../components/Button';
+import Title from '../components/Title';
 
 
 function Page3({navigation, route}): JSX.Element {
@@ -34,47 +31,43 @@ function Page3({navigation, route}): JSX.Element {
 
   return (
     <View
-    style={{
-    flex:1,
-    alignItems: 'center',
-    backgroundColor: 'white'
-}}>
+    style={styles.container}>
     <TouchableOpacity
         onPress={() => navigation.goBack()}
     >
         <Text>voltar</Text>
     </TouchableOpacity>
-    <Text style={styles.title}>Senha</Text>
+
+    <Title text={"Agora para finalizar..."} />
     <TextInput 
-        onChangeText={(value) => setSenha(value)}
-        value={senha}
-        placeholder="Digite sua senha"
-        secureTextEntry={true}
-    />
-    <TouchableOpacity style={styles.button}
-        onPress={handleSubmit}
-    >
-        <Text style={{fontSize:20}}>Cadastrar</Text>
-    </TouchableOpacity>
+            onChangeText={(value) => setSenha(value)}
+            value={senha}
+            style={styles.input}
+            placeholder= {"Digite sua senha"}
+            placeholderTextColor="#7c8bbf"
+            secureTextEntry={true}
+        />
+      <Button onPress={handleSubmit} text={"CADASTRAR"} />
 </View>
   );
 }
 
 const styles = StyleSheet.create({
-    sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
-    },
-    button: {
-      padding: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderColor: 'black',
-      borderWidth: 1,
-    },
-    title: {
-      fontSize: 40
-    }
-  });
+  container : {
+    flex:1,
+    alignItems: 'center',
+    backgroundColor: '#05154f',
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#7c8bbf',
+    padding: 6,
+    borderRadius: 30,
+    width: '100%',
+    color: 'white',
+  }
+});
 
 export default Page3;

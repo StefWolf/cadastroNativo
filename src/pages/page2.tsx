@@ -15,7 +15,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';  
-
+import Button from '../components/Button';
+import Input from '../components/Input';
+import Title from '../components/Title';
 
 
 
@@ -31,45 +33,27 @@ function Page2({navigation, route}): JSX.Element {
 
   return (
         <View
-          style={{
-           flex:1,
-           alignItems: 'center'
-          }}>
+          style={styles.container}>
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                 >
                 <Text>voltar</Text>
                 </TouchableOpacity>
-            <Text style={styles.title}>Nome</Text>
-            <TextInput
-                    onChangeText={(value) => setNome(value)}
-                    value={nome}
-                    placeholder="Digite seu e-mail"
-            />
-            <TouchableOpacity style={styles.button}
-                onPress={handleSubmit}
-            >
-                <Text>continuar</Text>
-            </TouchableOpacity>
+            <Title text={"Agora, digite seu Nome"} />
+            <Input setData={setNome} data={nome} placeholder={"Digite seu nome"}/>
+            <Button onPress={handleSubmit} text={"CONTINUAR"} />
         </View>
   );
 }
 
 const styles = StyleSheet.create({
-    sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
-    },
-    button: {
-      padding: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderColor: 'black',
-      borderWidth: 1,
-    },
-    title: {
-      fontSize: 40
-    }
-  });
+  container : {
+    flex:1,
+    alignItems: 'center',
+    backgroundColor: '#05154f',
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+});
 
 export default Page2;
